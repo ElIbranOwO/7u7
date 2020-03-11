@@ -1,0 +1,101 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+
+\title{Método Simplex}
+\author{María y Emmanuel}
+
+\begin{document}
+
+\maketitle
+
+\section{Introducción}
+\label{sec:introduccion}
+
+El método simplex es un algoritmo para resolver problemas de
+programación lineal inventado por el matemático norteamericano George
+Dantzig en el año 1947.
+
+La forma simplex de un problema de programación lineal es:
+Dada una matriz $A$ y vectores $b,c$, maximizar $c^Tx$ sujeto a
+$Ax= b$.
+
+\section{Ejemplo}
+\label{sec:ejemplo}
+Ilustraremos la aplicación del método simplex con un ejemplo.
+Considere el siguiente problema:
+
+   \begin{equation*}
+   \begin{aligned}
+   \text{Maximizar} \quad & 2x_{1}+2x_{2}\\
+   \text{sujeto a} \quad &
+     \begin{aligned}
+      x_{1},x_{2} &\geq  0\\
+      2x_{1}+x_{2} &\leq 4\\
+      -x_{1}-2x_{2} &\geq -5
+     \end{aligned}
+   \end{aligned}
+ \end{equation*}
+
+ Como en una de las desigualdades aparecen las variables del lado
+ izquierdo del simbolo $\geq $ multiplicamos por -1 de ambos lados.
+
+  \begin{equation*}
+   \begin{aligned}
+   \text{Maximizar} \quad & 2x_{1}+2x_{2}\\
+   \text{sujeto a} \quad &
+     \begin{aligned}
+      x_{1},x_{2} &\geq  0\\
+      2x_{1}+x_{2} &\leq 4\\
+      x_{1}+2x_{2} &\leq 5
+     \end{aligned}
+   \end{aligned}
+ \end{equation*}
+
+ Lo siguiente por hacer es definir una variable de holgura para cada
+ ecuación, dichas variables deben cumplir que sean mayores o iguales
+ que 0.
+ Por lo tanto definimos $x_3,x_4\geq 0$ de manera que $x_3 = 4-2x_1-x_2$ y
+ $x_4 = 5-x_1-2x_2 $.
+ Lo cual hace que nuestro problema de programación lineal sea de la
+ forma:
+
+  \begin{equation*}
+   \begin{aligned}
+   \text{Maximizar} \quad & 2x_{1}+2x_{2}\\
+   \text{sujeto a} \quad &
+     \begin{aligned}
+      x_{1},x_{2},x_3,x_4 &\geq  0\\
+      2x_{1}+x_{2}+x_3 &= 4\\
+      x_{1}+2x_{2}+x_4 &= 5
+     \end{aligned}
+   \end{aligned}
+ \end{equation*}
+
+ A continuación obtenemos un \emph{tablero simplex} despejando las
+ variables de holgura.
+
+    \begin{equation*}
+     \begin{aligned}
+      x_3 &= 4-2x_1-x_2 \\
+      x_4 &= 5-x_1-2x_2\\
+      0 &\leq x_{1},x_{2},x_3,x_4
+     \end{aligned}
+ \end{equation*}
+
+Definiendo $z$ igual a nuestra función objetivo, es decir $z =
+2x_1+2x_2$, con lo que nuestro tablero es:
+ 
+   \begin{equation*}
+     \begin{aligned}
+      x_3 &= 4-2x_1-x_2 \\
+      x_4 &= 5-x_1-2x_2\\
+      \hline
+      z &= 2x_1+2x_2
+     \end{aligned}
+ \end{equation*}
+
+\end{document}
+
